@@ -14,7 +14,7 @@ objectStorage:
   backupBucket: "brekan-pos-backups"
   storage: "20Gi"
 backend:
-  image: "ghcr.io/bobsuarez/pos-backend:0.1.0"
+  image: "ghcr.io/bobsuarez/pos-backend:0.1.1"
   replicas: 1
   maxReplicas: 1
   resources: { cpu: "500m", memory: "768Mi" }
