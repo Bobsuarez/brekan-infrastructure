@@ -1,0 +1,2 @@
+Los descriptores de cada tenant se crean aquí, uno por subdirectorio, y los escribe
+el Control Plane. Este archivo solo mantiene el directorio en Git mientras esté vacío.
