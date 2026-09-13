@@ -1,0 +1,59 @@
+# infrastructure/kubernetes/clusters/in-cluster/cluster-values.yaml
+#
+# Archivo de valores del cluster "in-cluster" — el servidor de
+# administración, y hoy el único cluster que existe (ADR-005, ADR-471).
+# Es la PRIMERA de las tres fuentes de valores del chart del tenant
+# (.ai/contracts/71-valores-de-cluster.schema.json, ADR-471 cláusula 2):
+# primero este archivo, después el descriptor del tenant, después su
+# archivo hermano sealed-values.yaml.
+#
+# NO ES UN OBJETO DE KUBERNETES: sin apiVersion, sin kind y sin metadata,
+# exactamente la misma forma que ADR-108 le dio a sealed-values.yaml. NO
+# LLEVA NINGUNA CREDENCIAL: el material sellado de la cuenta de ArgoCD de
+# este cluster vive en su archivo HERMANO, cluster-secret-values.yaml, que
+# produce admin/ desde 71C y que este chart NO consume.
+#
+# cluster.name TIENE QUE COINCIDIR con el nombre de esta carpeta
+# ("in-cluster"), y esa carpeta es lo que placement.targetCluster de cada
+# descriptor nombra — regla dura que este archivo no puede autoverificar
+# (la comprueba validate-descriptor.sh, no este YAML).
+#
+# LOS VALORES DE ABAJO SON EXACTAMENTE LOS QUE HOY ESTABAN FIJOS EN
+# ../../tenants/tenant-template/values.yaml PARA TODO EL PARQUE, Y ESTA
+# TAREA LOS RETIRA DE AHÍ (ADR-471 cláusula 3): no son valores nuevos, es
+# el mismo dato movido a su sitio correcto. hubIp es la IP real del nodo,
+# leída de infrastructure/kubernetes/base/control-plane/values.yaml
+# (cluster.nodeIps), no tecleada de nuevo.
+#
+# ESTE ARCHIVO TIENE QUE DEJAR EL RENDER DE `casamia` Y DE `staging`
+# IDÉNTICO AL DE ANTES DE ESTA TAREA — es la propiedad que hace la
+# adopción aditiva (criterio de aceptación de 71A-infrastructure-02).
+
+cluster:
+  name: in-cluster
+  displayName: "Servidor de administración (hub)"
+  role: hub
+
+ingress:
+  baseDomain: brekan.app
+  className: nginx
+  clusterIssuer: letsencrypt-prod
+
+fleetServices:
+  # IP pública del nodo único, la misma que control-plane/values.yaml
+  # declara en cluster.nodeIps. En el hub no se usa (los tres servicios de
+  # abajo son "local: true"), pero el conjunto de claves es cerrado y sin
+  # ramas: se declara igual, como manda el contrato.
+  hubIp: 169.58.206.195
+
+  backupRepository:
+    local: true
+    endpoint: http://backup-repository-minio.backup-repository.svc:9000
+
+  pushgateway:
+    local: true
+    url: http://pushgateway.monitoring.svc:9091
+
+  catalogRegistry:
+    local: true
+    host: registro.brekan.app
