@@ -29,22 +29,30 @@
 # IDÉNTICO AL DE ANTES DE ESTA TAREA — es la propiedad que hace la
 # adopción aditiva (criterio de aceptación de 71A-infrastructure-02).
 
+#
+# ACTUALIZADO EL 2026-09-15 — EL HUB SE MUDÓ DE SERVIDOR. El alojamiento de
+# 169.58.206.195 vencía en días, así que el hub pasó a 194.60.87.111 y aquella
+# máquina quedó como servidor de tenants (ver ../vps-contabo-tenant-1/). Tres
+# valores dejaron de ser ciertos y se corrigen aquí: hubIp, el dominio base
+# —que en este despliegue nunca fue "brekan.app", sino kinforgeworks.com— y el
+# emisor, que pasa a DNS01 por ser el único que no depende de que el reto HTTP
+# atraviese el proxy de Cloudflare.
 cluster:
   name: in-cluster
   displayName: "Servidor de administración (hub)"
   role: hub
 
 ingress:
-  baseDomain: brekan.app
+  baseDomain: kinforgeworks.com
   className: nginx
-  clusterIssuer: letsencrypt-prod
+  clusterIssuer: letsencrypt-cloudflare-dns01
 
 fleetServices:
   # IP pública del nodo único, la misma que control-plane/values.yaml
   # declara en cluster.nodeIps. En el hub no se usa (los tres servicios de
   # abajo son "local: true"), pero el conjunto de claves es cerrado y sin
   # ramas: se declara igual, como manda el contrato.
-  hubIp: 169.58.206.195
+  hubIp: 194.60.87.111
 
   backupRepository:
     local: true
@@ -56,4 +64,4 @@ fleetServices:
 
   catalogRegistry:
     local: true
-    host: registro.brekan.app
+    host: catalogo-brekan.kinforgeworks.com

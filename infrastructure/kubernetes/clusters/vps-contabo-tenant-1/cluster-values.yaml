@@ -1,0 +1,32 @@
+# Lo que depende del SERVIDOR y no del tenant, para el primer servidor
+# remoto del parque (requerimiento 71, ADR-005: un cluster por servidor).
+#
+# Esta máquina fue el hub hasta el 2026-09-15; al vencer su alojamiento se
+# mudó el hub a otra y esta quedó como servidor de tenants. Se inscribió
+# por el camino manual y la confirmó un operador comparando la huella de
+# su certificado de sellado.
+cluster:
+  name: vps-contabo-tenant-1
+  displayName: "VPS Contabo — servidor de tenants"
+  role: tenants
+
+ingress:
+  baseDomain: kinforgeworks.com
+  className: nginx
+  clusterIssuer: letsencrypt-cloudflare-dns01
+
+fleetServices:
+  # La IP del HUB, no la de este servidor: es a donde este cluster habla.
+  hubIp: 194.60.87.111
+  # Aquí los tres son REMOTOS, y por eso viajan por internet con nombre
+  # público en vez de por un Service interno. Es lo que hace que la
+  # NetworkPolicy del tenant use ipBlock hacia el hub y no namespaceSelector.
+  backupRepository:
+    local: false
+    endpoint: https://respaldos.kinforgeworks.com
+  pushgateway:
+    local: false
+    url: https://metrica.kinforgeworks.com
+  catalogRegistry:
+    local: false
+    host: catalogo-brekan.kinforgeworks.com
