@@ -70,5 +70,5 @@ entitlements:
     - proveedores
     - usuarios
 capacity:
-  declaredTransactionsPerHour: 1
+  declaredTransactionsPerHour: 200
   tier: "small"
