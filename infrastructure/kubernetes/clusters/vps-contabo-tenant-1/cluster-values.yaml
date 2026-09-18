@@ -13,7 +13,15 @@ cluster:
 ingress:
   baseDomain: kinforgeworks.com
   className: nginx
-  clusterIssuer: letsencrypt-cloudflare-dns01
+  # letsencrypt-prod (HTTP-01), no el emisor DNS-01 del hub: esta máquina fue
+  # el hub hasta el 2026-09-15 y la línea se arrastró al reconvertirla en
+  # servidor de tenants. Ese emisor no existe aquí, y el certificado del
+  # primer tenant se quedó en READY=False por eso (CR-029 §8 punto 1).
+  #
+  # PROVISIONAL: CR-029 quedó aprobado el 2026-09-18 con la opción 2-B
+  # (Cloudflare Origin CA sellado por tenant), y cuando eso se implante
+  # esta línea dejará de usarse.
+  clusterIssuer: letsencrypt-prod
 
 fleetServices:
   # La IP del HUB, no la de este servidor: es a donde este cluster habla.
