@@ -1,0 +1,74 @@
+tenant:
+  slug: "galfields"
+  displayName: "Galfields"
+  subdomain: "galfields"
+  vertical: "Cigarreria"
+placement:
+  targetCluster: "vps-contabo-tenant-1"
+database:
+  name: "brekan_pos"
+  storage: "10Gi"
+  resources: { cpu: "500m", memory: "512Mi" }
+objectStorage:
+  dataBucket: "brekan-pos-uploads"
+  backupBucket: "brekan-pos-backups"
+  storage: "20Gi"
+backend:
+  image: "ghcr.io/bobsuarez/pos-backend:0.1.3"
+  replicas: 1
+  maxReplicas: 1
+  resources: { cpu: "500m", memory: "768Mi" }
+backup:
+  mode: "logical-hourly"
+  schedule: "31 * * * *"
+  localRetentionHours: 48
+  offNodeRetentionDays: 30
+  integrityCheckSchedule: "15 6 * * *"
+  googleDriveSecretRef: "tenant-galfields-gdrive"
+secretsRef:
+  database: "tenant-galfields-db"
+  objectStorage: "tenant-galfields-minio"
+seed:
+  currency: "COP"
+  timezone: "America/Bogota"
+  roundingStepMinor: 5000
+  adminUsername: "admin"
+resolutions:
+  - number: "100000"
+    prefix: "HIH"
+    rangeStart: 1
+    rangeEnd: 50000
+    validFrom: 2026-09-18
+    validUntil: 2027-01-18
+terminals:
+  - code: "CAJA-01"
+    displayName: "Caja principal"
+    location: "Principal"
+    numbering:
+      resolution: "100000"
+      prefix: "HIH"
+      rangeStart: 1
+      rangeEnd: 50000
+
+license:
+  status: "active"
+
+entitlements:
+  contractedSurface: "both"
+  modules:
+    - venta
+    - productos
+    - inventario
+    - clientes
+    - reportes
+    - analitica
+    - promos
+    - ia
+    - turnos
+    - dian
+    - finanzas
+    - proveedores
+    - usuarios
+capacity:
+  declaredTransactionsPerHour: 1
+  tier: "small"
