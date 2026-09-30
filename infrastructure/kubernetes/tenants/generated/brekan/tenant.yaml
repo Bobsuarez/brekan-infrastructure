@@ -40,6 +40,12 @@ resolutions:
     rangeEnd: 100000
     validFrom: 2026-09-29
     validUntil: 2026-11-30
+  - number: "16000001"
+    prefix: "FR"
+    rangeStart: 500000
+    rangeEnd: 900000
+    validFrom: 2026-09-30
+    validUntil: 2026-10-02
 terminals:
   - code: "CAJA-01"
     displayName: "Caja principal"
@@ -50,6 +56,14 @@ terminals:
       rangeStart: 1
       rangeEnd: 100000
 
+  - code: "CAJA-02"
+    displayName: "Caja secundaria"
+    location: "Sede Libertad"
+    numbering:
+      resolution: "16000001"
+      prefix: "FR"
+      rangeStart: 500000
+      rangeEnd: 700000
 license:
   status: "active"
 
