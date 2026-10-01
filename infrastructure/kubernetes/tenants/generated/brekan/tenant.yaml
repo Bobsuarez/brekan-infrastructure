@@ -56,14 +56,6 @@ terminals:
       rangeStart: 1
       rangeEnd: 100000
 
-  - code: "CAJA-02"
-    displayName: "Caja secundaria"
-    location: "Sede Libertad"
-    numbering:
-      resolution: "16000001"
-      prefix: "FR"
-      rangeStart: 500000
-      rangeEnd: 700000
 license:
   status: "active"
 
