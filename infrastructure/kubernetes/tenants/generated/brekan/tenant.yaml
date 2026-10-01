@@ -64,14 +64,6 @@ terminals:
       prefix: "FR"
       rangeStart: 500000
       rangeEnd: 700000
-  - code: "CAJA-03"
-    displayName: "Caja Principal"
-    location: "Sede Castellana"
-    numbering:
-      resolution: "16000001"
-      prefix: "FR"
-      rangeStart: 700001
-      rangeEnd: 900000
 license:
   status: "active"
 
