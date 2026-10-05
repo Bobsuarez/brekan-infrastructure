@@ -59,14 +59,6 @@ terminals:
       rangeStart: 1
       rangeEnd: 100000
 
-  - code: "CAJA-04"
-    displayName: "Caja Principal"
-    location: "Sede Libertad"
-    numbering:
-      resolution: "16000001"
-      prefix: "FR"
-      rangeStart: 500000
-      rangeEnd: 700000
   - code: "CAJA-05"
     displayName: "Caja Principal"
     location: "Sede Libertad"
