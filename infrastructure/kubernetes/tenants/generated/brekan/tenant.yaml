@@ -33,6 +33,9 @@ seed:
   timezone: "America/Bogota"
   roundingStepMinor: 5000
   adminUsername: "admin"
+locations:
+  - name: "Principal"
+  - name: "Sede Libertad"
 resolutions:
   - number: "15000001"
     prefix: "SES"
