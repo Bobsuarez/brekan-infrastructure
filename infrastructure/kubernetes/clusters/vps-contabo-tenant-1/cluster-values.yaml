@@ -38,3 +38,11 @@ fleetServices:
   catalogRegistry:
     local: false
     host: catalogo-brekan.kinforgeworks.com
+  # El n8n central del parque (requerimiento 123). Remoto, como los demas: el backend de
+  # cada tienda le avisa por internet con nombre publico y firma derivada de su id, nunca
+  # por un Service interno. `eventos.` es el nombre que solo deja pasar la ruta exacta del
+  # aviso; el editor (`n8n.`) esta tras Cloudflare Access y no se usa desde aqui.
+  # Ausente es apagado: sin este bloque el backend no emite nada.
+  parkEvents:
+    local: false
+    host: eventos.kinforgeworks.com
