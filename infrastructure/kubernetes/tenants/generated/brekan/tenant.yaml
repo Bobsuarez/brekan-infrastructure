@@ -21,7 +21,7 @@ backend:
 backup:
   mode: "logical-hourly"
   schedule: "11 * * * *"
-  localRetentionHours: 48
+  localRetentionHours: 24
   offNodeRetentionDays: 30
   integrityCheckSchedule: "15 6 * * *"
   googleDriveSecretRef: "tenant-brekan-gdrive"
