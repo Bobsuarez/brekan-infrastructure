@@ -7,12 +7,12 @@ placement:
   targetCluster: "vps-contabo-tenant-1"
 database:
   name: "brekan_pos"
-  storage: "10Gi"
+  storage: "50Gi"
   resources: { cpu: "500m", memory: "512Mi" }
 objectStorage:
   dataBucket: "brekan-pos-uploads"
   backupBucket: "brekan-pos-backups"
-  storage: "20Gi"
+  storage: "50Gi"
 backend:
   image: "ghcr.io/bobsuarez/pos-backend:0.1.15"
   replicas: 1
