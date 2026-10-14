@@ -78,6 +78,7 @@ entitlements:
     - finanzas
     - proveedores
     - usuarios
+  verticalModule: "bar"
 capacity:
   declaredTransactionsPerHour: 1
   tier: "small"
