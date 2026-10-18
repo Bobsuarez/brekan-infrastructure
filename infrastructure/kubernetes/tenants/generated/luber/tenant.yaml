@@ -39,7 +39,7 @@ resolutions:
     rangeStart: 1
     rangeEnd: 5000
     validFrom: 2026-10-15
-    validUntil: 2027-01-01
+    validUntil: 2026-10-31
 terminals:
   - code: "CAJA-01"
     displayName: "Caja principal"
