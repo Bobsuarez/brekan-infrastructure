@@ -60,7 +60,7 @@ terminals:
       rangeEnd: 100000
 
 license:
-  status: "active"
+  status: "suspended"
 entitlements:
   contractedSurface: "both"
   modules:
