@@ -1,0 +1,76 @@
+tenant:
+  slug: "myb"
+  displayName: "myb"
+  subdomain: "myb"
+  vertical: "tienda_de_barrio"
+placement:
+  targetCluster: "vps-contabo-tenant-1"
+database:
+  name: "brekan_pos"
+  storage: "30Gi"
+  resources: { cpu: "500m", memory: "512Mi" }
+objectStorage:
+  dataBucket: "brekan-pos-uploads"
+  backupBucket: "brekan-pos-backups"
+  storage: "20Gi"
+backend:
+  image: "ghcr.io/bobsuarez/pos-backend:0.1.21"
+  replicas: 1
+  maxReplicas: 1
+  resources: { cpu: "500m", memory: "768Mi" }
+backup:
+  mode: "logical-hourly"
+  schedule: "58 * * * *"
+  localRetentionHours: 24
+  offNodeRetentionDays: 30
+  integrityCheckSchedule: "15 6 * * *"
+  googleDriveSecretRef: "tenant-myb-gdrive"
+secretsRef:
+  database: "tenant-myb-db"
+  objectStorage: "tenant-myb-minio"
+seed:
+  currency: "COP"
+  timezone: "America/Bogota"
+  roundingStepMinor: 5000
+  adminUsername: "admin"
+resolutions:
+  - number: "18750000001"
+    prefix: "YEC"
+    rangeStart: 1
+    rangeEnd: 10000
+    validFrom: 2026-10-30
+    validUntil: 2027-10-30
+terminals:
+  - code: "CAJA-01"
+    displayName: "Caja principal"
+    location: "Principal"
+    numbering:
+      resolution: "18750000001"
+      prefix: "YEC"
+      rangeStart: 1
+      rangeEnd: 10000
+
+license:
+  status: "active"
+
+entitlements:
+  contractedSurface: "both"
+  modules:
+    - venta
+    - productos
+    - inventario
+    - clientes
+    - reportes
+    - analitica
+    - promos
+    - ia
+    - turnos
+    - dian
+    - finanzas
+    - proveedores
+    - usuarios
+capacity:
+  declaredTransactionsPerHour: 1
+  tier: "small"
+locations:
+  - name: "Principal"
