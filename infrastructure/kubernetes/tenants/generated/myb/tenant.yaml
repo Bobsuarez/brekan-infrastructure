@@ -51,7 +51,7 @@ terminals:
       rangeEnd: 10000
 
 license:
-  status: "trial"
+  status: "active"
   expiresOn: "2026-09-12"
 entitlements:
   contractedSurface: "both"
