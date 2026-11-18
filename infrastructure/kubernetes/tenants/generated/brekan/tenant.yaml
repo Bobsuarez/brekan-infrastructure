@@ -68,41 +68,34 @@ entitlements:
     - productos
     - inventario
     - reportes
+    - analitica
+    - promos
+    - ia
     - turnos
+    - finanzas
+    - proveedores
     - usuarios
   verticalModule: "bar"
   plan:
-    key: "esencial"
-    label: "Esencial"
-    summary: "Para vender y llevar la caja completa"
-    brandAddon: false
-    functions: []
+    key: "negocio"
+    label: "Negocio"
+    summary: "Para el negocio que compra, promociona y mide"
+    brandAddon: true
+    functions:
+      - compras
+      - reposicion
+      - promociones
+      - finanzas
+      - turnos
+      - lineas_de_negocio
+      - musica
+      - ia_lote
+      - marca
     upgrades:
-      compras:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      finanzas:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
       ia_imagenes:
         plan: "pro"
         planLabel: "Pro"
         brandAddon: false
-      ia_lote:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      lineas_de_negocio:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      marca:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: true
-        alternativePlanLabel: "Pro"
       modulo_vertical:
         plan: "pro"
         planLabel: "Pro"
@@ -111,24 +104,8 @@ entitlements:
         plan: "pro"
         planLabel: "Pro"
         brandAddon: false
-      musica:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      promociones:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      reposicion:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      turnos:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-    peopleLimit: 2
-    aiMonthlyUses: 0
+    peopleLimit: null
+    aiMonthlyUses: 100
 capacity:
   declaredTransactionsPerHour: 1
   tier: "small"
