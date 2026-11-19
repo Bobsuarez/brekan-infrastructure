@@ -68,34 +68,41 @@ entitlements:
     - productos
     - inventario
     - reportes
-    - analitica
-    - promos
-    - ia
     - turnos
-    - finanzas
-    - proveedores
     - usuarios
   verticalModule: "bar"
   plan:
-    key: "negocio"
-    label: "Negocio"
-    summary: "Para el negocio que compra, promociona y mide"
-    brandAddon: true
-    functions:
-      - compras
-      - reposicion
-      - promociones
-      - finanzas
-      - turnos
-      - lineas_de_negocio
-      - musica
-      - ia_lote
-      - marca
+    key: "esencial"
+    label: "Esencial"
+    summary: "Para vender y llevar la caja completa"
+    brandAddon: false
+    functions: []
     upgrades:
-      ia_imagenes:
-        plan: "pro"
-        planLabel: "Pro"
+      compras:
+        plan: "negocio"
+        planLabel: "Negocio"
         brandAddon: false
+      finanzas:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      ia_imagenes:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      ia_lote:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      lineas_de_negocio:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      marca:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: true
+        alternativePlanLabel: "Pro"
       modulo_vertical:
         plan: "pro"
         planLabel: "Pro"
@@ -104,8 +111,25 @@ entitlements:
         plan: "pro"
         planLabel: "Pro"
         brandAddon: false
-    peopleLimit: null
-    aiMonthlyUses: 100
+      musica:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      promociones:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      reposicion:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+      turnos:
+        plan: "negocio"
+        planLabel: "Negocio"
+        brandAddon: false
+    peopleLimit: 3
+    aiMonthlyUses: 0
+    aiWeeklyImages: 0
 capacity:
   declaredTransactionsPerHour: 1
   tier: "small"
