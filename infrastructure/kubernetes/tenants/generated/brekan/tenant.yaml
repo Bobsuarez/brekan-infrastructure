@@ -68,6 +68,7 @@ entitlements:
     - productos
     - inventario
     - reportes
+    - promos
     - turnos
     - usuarios
   verticalModule: "bar"
@@ -76,7 +77,8 @@ entitlements:
     label: "Esencial"
     summary: "Para vender y llevar la caja completa"
     brandAddon: false
-    functions: []
+    functions:
+      - promociones
     upgrades:
       compras:
         plan: "negocio"
@@ -112,10 +114,6 @@ entitlements:
         planLabel: "Pro"
         brandAddon: false
       musica:
-        plan: "negocio"
-        planLabel: "Negocio"
-        brandAddon: false
-      promociones:
         plan: "negocio"
         planLabel: "Negocio"
         brandAddon: false
