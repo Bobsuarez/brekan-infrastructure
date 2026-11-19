@@ -59,16 +59,42 @@ entitlements:
     - venta
     - productos
     - inventario
-    - clientes
     - reportes
     - analitica
     - promos
     - ia
     - turnos
-    - dian
     - finanzas
     - proveedores
     - usuarios
+  plan:
+    key: "negocio"
+    label: "Negocio"
+    summary: "Para el negocio que compra, promociona y mide"
+    brandAddon: true
+    functions:
+      - compras
+      - reposicion
+      - promociones
+      - finanzas
+      - turnos
+      - lineas_de_negocio
+      - musica
+      - ia_lote
+      - ia_imagenes
+      - marca
+    upgrades:
+      modulo_vertical:
+        plan: "pro"
+        planLabel: "Pro"
+        brandAddon: false
+      multisede:
+        plan: "pro"
+        planLabel: "Pro"
+        brandAddon: false
+    peopleLimit: 6
+    aiMonthlyUses: 100
+    aiWeeklyImages: 3
 capacity:
   declaredTransactionsPerHour: 1
   tier: "small"
